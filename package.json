@@ -4,7 +4,9 @@
   "description": "Simple javascript logger for easy and scalable logging",
   "main": "src/index.ts",
   "scripts": {
-    "build": "node ./node_modules/typescript/bin/tsc",
+    "_lint": "node ./node_modules/tslint/bin/tslint --config tslint.json --project tsconfig.json",
+    "lint": "npm run _lint || true",
+    "build": "npm run _lint && node ./node_modules/typescript/bin/tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -27,6 +29,7 @@
   },
   "homepage": "https://github.com/calderhayes/articulog#readme",
   "devDependencies": {
+    "tslint": "^4.1.1",
     "typescript": "^2.4.1"
   },
   "dependencies": {

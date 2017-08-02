@@ -22,7 +22,9 @@ interface ILogger {
   readonly timeEnd: () => void;
 }
 
-const noOp = () => { };
+const noOp = () => {
+  // No Op
+};
 
 const createLogger = (options: ILoggerOptions) => {
 
@@ -31,12 +33,12 @@ const createLogger = (options: ILoggerOptions) => {
   const name = opts.name ? opts.name :
     'Log' + (new Date()).getTime().toString();
 
-  let logger = getLogger(name);
+  const logger = getLogger(name);
   logger.setLevel(opts.logLevel || LogLevel.INFO);
 
   if (opts.isCountEnabled && console.count) {
     (logger as any).count = () => {
-      console.count(name)
+      console.count(name);
     };
   }
   else {
@@ -74,7 +76,7 @@ const createLogger = (options: ILoggerOptions) => {
 
     const rawMethod = original(methodName, level, loggerName);
     return (...msg: Array<any>) => {
-      let newMessage = `[${loggerName}|${methodName.toUpperCase()}${p}]`;
+      const newMessage = `[${loggerName}|${methodName.toUpperCase()}${p}]`;
       rawMethod(newMessage, ...msg);
       setTimeout(() => callback(newMessage, ...msg), 0);
     };
