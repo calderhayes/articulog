@@ -1,93 +1,42 @@
-import {getLogger} from 'loglevel';
+import {createConsoleLogger} from './console';
+
+// The same as LogLevel, but encapsulated here so we can export
+const enum LoggerLevel {
+  TRACE = 0,
+  DEBUG = 1,
+  INFO = 2,
+  WARN = 3,
+  ERROR = 4,
+  SILENT = 5
+}
 
 interface ILoggerOptions {
   name: string;
-  logLevel: LogLevel;
+  loggerLevel: LoggerLevel;
   prefix?: string;
   isCountEnabled?: boolean;
   isAssertEnabled?: boolean;
   isTimeEnabled?: boolean;
-  logCallback: (...msgs: Array<any>) => void;
+  logCallback?: (...msgs: Array<any>) => void;
+  customPrefixFunction?: (methodName: string, level: LogLevel, loggerName: string, prefix: string|null) => string;
 }
 
 interface ILogger {
-  readonly trace: (...args: Array<any>) => void;
-  readonly debug: (...args: Array<any>) => void;
-  readonly info: (...args: Array<any>) => void;
-  readonly warn: (...args: Array<any>) => void;
-  readonly error: (...args: Array<any>) => void;
-  readonly count: () => void;
-  readonly assert: (value: any, message?: string, ...optionalParams: Array<any>) => void;
-  readonly time: () => void;
-  readonly timeEnd: () => void;
+  trace(...args: Array<any>): void;
+  debug(...args: Array<any>): void;
+  info(...args: Array<any>): void;
+  warn(...args: Array<any>): void;
+  error(...args: Array<any>): void;
+  count(): void;
+  assert(value: any, message?: string, ...optionalParams: Array<any>): void;
+  time(): void;
+  timeEnd(): void;
+  setLevel(level : LoggerLevel, persist? : boolean): void;
 }
 
-const noOp = () => {
-  // No Op
-};
-
-const createLogger = (options: ILoggerOptions) => {
-
-  const opts = options || {} as any;
-
-  const name = opts.name ? opts.name :
-    'Log' + (new Date()).getTime().toString();
-
-  const logger = getLogger(name);
-  logger.setLevel(opts.logLevel || LogLevel.INFO);
-
-  if (opts.isCountEnabled && console.count) {
-    (logger as any).count = () => {
-      console.count(name);
-    };
-  }
-  else {
-    (logger as any).count = noOp;
-  }
-
-  if (opts.isAssertEnabled && console.assert) {
-    (logger as any).count = (value: any, message?: string, ...optionalParams: Array<any>) => {
-      console.assert(value, message, ...optionalParams);
-    };
-  }
-  else {
-    (logger as any).assert = noOp;
-  }
-
-  if (opts.isTimeEnabled && console.time) {
-    (logger as any).time = () => {
-      console.time(name);
-    };
-
-    (logger as any).timeEnd = () => {
-      console.timeEnd(name);
-    };
-  }
-  else {
-    (logger as any).time = noOp;
-    (logger as any).timeEnd = noOp;
-  }
-
-  const original = logger.methodFactory;
-  const callback: any = opts.logCallback || noOp;
-
-  const p = (opts.prefix) ? `|${opts.prefix}` : '';
-  logger.methodFactory = (methodName: string, level: LogLevel, loggerName: string) => {
-
-    const rawMethod = original(methodName, level, loggerName);
-    return (...msg: Array<any>) => {
-      const newMessage = `[${loggerName}|${methodName.toUpperCase()}${p}]`;
-      rawMethod(newMessage, ...msg);
-      setTimeout(() => callback(newMessage, ...msg), 0);
-    };
-
-};
-
-  return (logger as any) as ILogger;
-};
-
 export {
+  LoggerLevel,
   ILogger,
   ILoggerOptions,
-  createLogger
+  createConsoleLogger
 }
