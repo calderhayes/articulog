@@ -1,0 +1,37 @@
+{
+  "name": "articulog",
+  "version": "1.0.0",
+  "description": "Simple javascript logger for easy and scalable logging",
+  "main": "src/index.ts",
+  "scripts": {
+    "build": "node ./node_modules/typescript/bin/tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/calderhayes/articulog.git"
+  },
+  "keywords": [
+    "log",
+    "logging",
+    "debugger",
+    "typescript",
+    "browser",
+    "node",
+    "server"
+  ],
+  "author": "Calder Hayes",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/calderhayes/articulog/issues"
+  },
+  "homepage": "https://github.com/calderhayes/articulog#readme",
+  "devDependencies": {
+    "typescript": "^2.4.1"
+  },
+  "dependencies": {
+    "@types/loglevel": "^1.4.29",
+    "loglevel": "^1.4.1",
+    "tslib": "^1.7.1"
+  }
+}
