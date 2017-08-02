@@ -66,11 +66,11 @@ const createLogger = (options: ILoggerOptions) => {
     (logger as any).timeEnd = noOp;
   }
 
-  const original = log.methodFactory;
+  const original = logger.methodFactory;
   const callback: any = opts.logCallback || noOp;
 
   const p = (opts.prefix) ? `|${opts.prefix}` : '';
-  log.methodFactory = (methodName: string, level: LogLevel, loggerName: string) => {
+  logger.methodFactory = (methodName: string, level: LogLevel, loggerName: string) => {
 
     const rawMethod = original(methodName, level, loggerName);
     return (...msg: Array<any>) => {
