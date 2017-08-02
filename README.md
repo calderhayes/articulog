@@ -1,5 +1,5 @@
 # articulog
-Simple javascript logger for easy and scalable logging
+Simple javascript logger for easy and scalable logging. Built on top of LogLevel.
 
 ## Install
 
