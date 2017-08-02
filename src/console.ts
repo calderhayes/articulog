@@ -1,5 +1,6 @@
 import {ILoggerOptions, LoggerLevel, ILogger} from './index';
 import {getLogger} from 'loglevel';
+import {registerName} from './name-register';
 
 // Creates a console logger for node stdio, or the browser console
 export const createConsoleLogger = (options: ILoggerOptions) => {
@@ -23,8 +24,7 @@ export const createConsoleLogger = (options: ILoggerOptions) => {
     defaultPrefixFunction : opts.customPrefixFunction;
 
   // The name of the log, important and should be unique
-  const name = opts.name ? opts.name :
-    'Log' + (new Date()).getTime().toString();
+  const name = registerName(opts.name);
 
   // The base of the console log is the loglevel logger
   const logger = getLogger(name);

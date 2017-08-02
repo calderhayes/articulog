@@ -1,5 +1,7 @@
 import {createConsoleLogger} from './console';
 
+// TODO: Move these definitions out
+
 // The same as LogLevel, but encapsulated here so we can export
 const enum LoggerLevel {
   TRACE = 0,
