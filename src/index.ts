@@ -12,18 +12,22 @@ const enum LoggerLevel {
   SILENT = 5
 }
 
-interface ILoggerOptions {
-  name: string;
+interface ILoggerLevelConfiguration {
   loggerLevel: LoggerLevel;
-  prefix?: string;
   isCountEnabled?: boolean;
   isAssertEnabled?: boolean;
   isTimeEnabled?: boolean;
+}
+
+interface ILoggerOptions {
+  name: string;
+  prefix?: string;
   logCallback?: (...msgs: Array<any>) => void;
   customPrefixFunction?: (methodName: string, level: LogLevel, loggerName: string, prefix: string|null) => string;
 }
 
 interface ILogger {
+  name: string;
   trace(...args: Array<any>): void;
   debug(...args: Array<any>): void;
   info(...args: Array<any>): void;
@@ -34,11 +38,13 @@ interface ILogger {
   time(): void;
   timeEnd(): void;
   setLevel(level : LoggerLevel, persist? : boolean): void;
+  methodFactory: (rawMethod: (...msg : Array<any>) => void, methodName: string, level: LogLevel, loggerName: string) => void;
 }
 
 export {
   LoggerLevel,
   ILogger,
   ILoggerOptions,
+  ILoggerLevelConfiguration,
   createConsoleLogger
 }
