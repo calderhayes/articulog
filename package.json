@@ -8,7 +8,9 @@
     "_lint": "node ./node_modules/tslint/bin/tslint --config tslint.json --project tsconfig.json",
     "lint": "npm run _lint || true",
     "build": "npm run _lint && node ./node_modules/typescript/bin/tsc",
-    "test": "npm run build && ./node_modules/mocha/bin/mocha ./dist"
+    "test": "npm run build && ./node_modules/mocha/bin/mocha --recursive ./dist/test",
+    "clean": "rm -rf ./dist/*",
+    "prepublish": "npm run clean && npm run build"
   },
   "repository": {
     "type": "git",

@@ -10,4 +10,4 @@ export {LoggerFactory} from './factory';
 
 export {LogControl} from './control';
 
-export {ConsoleLoggerFactory, basicLogger} from './console-factory';
+export {ConsoleLoggerFactory, basicLogger as log} from './console-factory';

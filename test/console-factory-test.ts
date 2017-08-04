@@ -2,7 +2,7 @@
 import {suite, test} from 'mocha-typescript';
 import expect from 'ceylon';
 
-import {ConsoleLoggerFactory} from './console-factory';
+import {ConsoleLoggerFactory} from '../src/console-factory';
 import {ILoggerOptions, LoggerLevel} from '../src/model';
 
 @suite
