@@ -1,7 +1,7 @@
 {
   "name": "articulog",
   "version": "1.0.0",
-  "description": "Simple javascript logger for easy and scalable logging",
+  "description": "Simple dependency free javascript logger for easy and scalable logging",
   "main": "src/index.ts",
   "scripts": {
     "_lint": "node ./node_modules/tslint/bin/tslint --config tslint.json --project tsconfig.json",

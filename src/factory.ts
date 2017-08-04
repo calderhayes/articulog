@@ -32,10 +32,6 @@ export class LoggerFactory implements ILoggerFactory {
       throw 'Logger Options must be provided';
     }
 
-    const doesLogNameExist = LogControl.doesLogExist(options.name);
-    const name = doesLogNameExist ? (options.name || '') : options.name;
-    options.name = name;
-
     const logger = new Logger(options, this.options);
 
     LogControl.addLogger(options.name, logger);
