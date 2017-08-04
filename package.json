@@ -30,8 +30,7 @@
   },
   "homepage": "https://github.com/calderhayes/articulog#readme",
   "devDependencies": {
-    "@types/assert": "0.0.31",
-    "assert": "^1.4.1",
+    "ceylon": "^0.9.1",
     "mocha": "^3.5.0",
     "mocha-typescript": "^1.1.7",
     "tslint": "^4.1.1",

@@ -8,12 +8,12 @@ if (console) {
     loggerTypeId: 'console',
 
     trace: console.trace.bind(console),
-    debug: console.debug.bind(console),
+    debug: console.debug ? console.debug.bind(console) : noOp,
     info: console.info.bind(console),
     warn: console.warn.bind(console),
     error: console.error.bind(console),
 
-    count: console.count.bind(console),
+    count: console.count ? console.count.bind(console) : noOp,
     assert: console.assert.bind(console),
     time: console.time.bind(console),
     timeEnd: console.timeEnd.bind(console),

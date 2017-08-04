@@ -1,6 +1,6 @@
 // import { suite, test, slow, timeout, skip, only } from 'mocha-typescript';
 import {suite, test} from 'mocha-typescript';
-// import * as assert from 'assert';
+import expect from 'ceylon';
 
 import {ConsoleLoggerFactory} from './console-factory';
 import {ILoggerOptions, LoggerLevel} from '../src/model';
@@ -16,8 +16,7 @@ export class ConsoleLoggerFactoryTest {
     };
 
     const logger = ConsoleLoggerFactory.createLog(loggerOptions);
-
-    assert.ok(logger !== null);
+    expect(logger).toExist('Logger should exist!');
   }
 
 }
