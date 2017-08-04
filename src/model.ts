@@ -17,7 +17,7 @@ export interface ILoggerOptions {
   isCountEnabled?: boolean;
   isAssertEnabled?: boolean;
   isTimeEnabled?: boolean;
-  methodFactory: LogMethodFactory;
+  methodFactory?: LogMethodFactory;
 }
 
 export interface ILoggerFactoryOptions {

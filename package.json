@@ -8,7 +8,7 @@
     "_lint": "node ./node_modules/tslint/bin/tslint --config tslint.json --project tsconfig.json",
     "lint": "npm run _lint || true",
     "build": "npm run _lint && node ./node_modules/typescript/bin/tsc",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npm run build && ./node_modules/mocha/bin/mocha ./dist"
   },
   "repository": {
     "type": "git",
@@ -30,6 +30,10 @@
   },
   "homepage": "https://github.com/calderhayes/articulog#readme",
   "devDependencies": {
+    "@types/assert": "0.0.31",
+    "assert": "^1.4.1",
+    "mocha": "^3.5.0",
+    "mocha-typescript": "^1.1.7",
     "tslint": "^4.1.1",
     "typescript": "^2.4.1"
   },
