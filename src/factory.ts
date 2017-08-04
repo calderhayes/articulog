@@ -1,4 +1,4 @@
-import {ILoggerOptions, ILoggerFactoryOptions, noOp, ILoggerFactory} from './model';
+import {ILoggerOptions, ILoggerFactoryOptions, noOp, ILoggerFactory, ILogger} from './model';
 import {Logger} from './logger';
 import {LogControl} from './control';
 
@@ -36,6 +36,6 @@ export class LoggerFactory implements ILoggerFactory {
 
     LogControl.addLogger(options.name, logger);
 
-    return logger;
+    return logger as ILogger;
   }
 }

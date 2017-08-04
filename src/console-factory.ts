@@ -1,5 +1,5 @@
 import {LoggerFactory} from './factory';
-import {ILoggerFactoryOptions, noOp, defaultMethodFactory} from './model';
+import {ILoggerFactoryOptions, noOp, defaultMethodFactory, LoggerLevel, ILogger} from './model';
 
 let options: ILoggerFactoryOptions;
 
@@ -41,3 +41,10 @@ else {
 }
 
 export const ConsoleLoggerFactory = new LoggerFactory(options);
+
+export const basicLogger = ConsoleLoggerFactory.createLog({
+  name: 'Articulog',
+  loggerLevel: LoggerLevel.TRACE
+});
+
+export {ILogger};
