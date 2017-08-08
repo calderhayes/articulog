@@ -8,7 +8,7 @@
     "_lint": "node ./node_modules/tslint/bin/tslint --config tslint.json --project tsconfig.json",
     "lint": "npm run _lint || true",
     "build": "npm run _lint && node ./node_modules/typescript/bin/tsc",
-    "test": "npm run build && ./node_modules/mocha/bin/mocha --recursive ./dist/test",
+    "test": "npm run build && node ./node_modules/mocha/bin/mocha --recursive ./dist/test",
     "clean": "rm -rf ./dist/*",
     "prepublish": "npm run clean && npm run build"
   },
@@ -32,13 +32,13 @@
   },
   "homepage": "https://github.com/calderhayes/articulog#readme",
   "devDependencies": {
-    "ceylon": "^0.9.1",
-    "mocha": "^3.5.0",
-    "mocha-typescript": "^1.1.7",
-    "tslint": "^4.1.1",
-    "typescript": "^2.4.1"
+    "ceylon": "0.9.1",
+    "mocha": "3.5.0",
+    "mocha-typescript": "1.1.7",
+    "tslint": "4.1.1",
+    "typescript": "2.4.2"
   },
   "dependencies": {
-    "tslib": "^1.7.1"
+    "tslib": "1.7.1"
   }
 }
