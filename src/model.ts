@@ -34,7 +34,7 @@ export interface ILoggerFactoryOptions {
   time?: (label: string) => void;
   timeEnd?: (label: string) => void;
 
-  methodFactory: LogMethodFactory;
+  methodFactory?: LogMethodFactory;
 }
 
 export const defaultMethodFactory: LogMethodFactory = (rawMethod: (...msg : Array<any>) => void) => {

@@ -74,7 +74,7 @@ export class Logger implements ILogger {
 
     this._name = loggerOptions.name;
     this._loggerTypeId = factoryOptions.loggerTypeId || '';
-    this._level = LoggerLevel.SILENT;
+    this._level = loggerOptions.loggerLevel;
     this._methodFactory = loggerOptions.methodFactory || factoryOptions.methodFactory || defaultMethodFactory;
 
     this._trace = factoryOptions.trace || noOp;
@@ -120,14 +120,6 @@ export class Logger implements ILogger {
     this.info = this.buildMethod(level, LoggerLevel.INFO, this._info);
     this.warn = this.buildMethod(level, LoggerLevel.WARN, this._warn);
     this.error = this.buildMethod(level, LoggerLevel.ERROR, this._error);
-
-
-    this.trace = this.methodFactory(this._trace, Logger.getMethodName(LoggerLevel.TRACE), LoggerLevel.TRACE, this.name);
-    this.trace = level >= LoggerLevel.TRACE ? this._trace : noOp;
-    this.debug = level >= LoggerLevel.DEBUG ? this._debug : noOp;
-    this.info = level >= LoggerLevel.INFO ? this._info : noOp;
-    this.warn = level >= LoggerLevel.WARN ? this._warn : noOp;
-    this.error = level >= LoggerLevel.ERROR ? this._error : noOp;
   }
 
   public setMethodFactory(factory: LogMethodFactory) {
@@ -147,7 +139,7 @@ export class Logger implements ILogger {
     subjectLevel: LoggerLevel,
     originalSubjectMethod: (...msg : Array<any>) => void) {
 
-    if (targetLevel < subjectLevel) {
+    if (targetLevel > subjectLevel) {
       return noOp;
     }
 
