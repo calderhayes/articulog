@@ -1,4 +1,3 @@
-./node_modules
-./test
-./src
-./dist/test
+test
+src
+dist/test
