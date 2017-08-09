@@ -77,7 +77,7 @@ logger.error('An error occured!');
 ### File logger
 
 On a production nodejs application I would create a custom LoggerFactory that wraps
-winston functionality.
+winston functionality. I will add an example soon, but it is just a matter of creating a special factory.
 
 ## Development
 
