@@ -1,6 +1,6 @@
 {
   "name": "articulog",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Simple dependency free javascript logger for easy and scalable logging",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
