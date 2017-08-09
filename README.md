@@ -1,9 +1,9 @@
 # articulog
 Simple typescript/javascript logging wrapper. Inspired by:
 
-- (Common.Logging)[https://github.com/net-commons/common-logging]
-- (LogLevel)[https://github.com/pimterry/loglevel]
-- (Winston)[https://github.com/winstonjs/winston]
+- [Common.Logging](https://github.com/net-commons/common-logging)
+- [LogLevel](https://github.com/pimterry/loglevel)
+- [Winston](https://github.com/winstonjs/winston)
 
 The goals of this project is to do the following:
 
